@@ -8,10 +8,10 @@ async function checkForUpdates(repo, currentVersion) {
     const lastNoShow = await GM.getValue('version_no_show');
     const now = new Date().getTime();
 
-    // 1분 동안 무시한
-    if (lastIgnored && (now - lastIgnored < 5 * 1000)) {
+    // 1분 동안 무시
+    if (lastIgnored && (now - lastIgnored < 60 * 1000)) {
         // 남은 시간 계산
-        const remainingTime = 5 * 1000 - (now - lastIgnored);
+        const remainingTime = 60 * 1000 - (now - lastIgnored);
         console.log(`무시 후 다시 나타나기까지 ${formatTime(remainingTime)} 남았습니다.`);
         return; 
     }
